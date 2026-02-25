@@ -2715,6 +2715,20 @@
           top: 0;
         }
       }
+
+      /* =========================================
+         FIX: NAV BAR OVERLAP & VERTICAL CENTERING
+      ========================================= */
+      .stat-pin-container,
+      .pin-sequence,
+      .pin-sequence .scroll-container,
+      .comparison-pin-container {
+        /* Subtracts the exact 60px of the header so it fits the screen perfectly */
+        height: calc(100vh - 60px) !important;
+        height: calc(
+          100dvh - 60px
+        ) !important; /* 'dvh' fixes Safari/iPad address bar jumping */
+      }
     </style>
   </head>
   <body>
@@ -3561,7 +3575,7 @@
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".stat-sequence",
-            start: "top top",
+            start: "top 60px" /* <-- CHANGE THIS */,
             end: "+=" + statScrollDuration,
             scrub: 1.5, // adds gentle motion damping
             pin: true,
@@ -3585,7 +3599,7 @@
           ease: "none",
           scrollTrigger: {
             trigger: ".pin-sequence",
-            start: "top top",
+            start: "top 60px" /* <-- CHANGE THIS */,
             end: "+=" + frameCount * 500,
             scrub: true,
             pin: true,
@@ -3658,7 +3672,7 @@
           ease: "none",
           scrollTrigger: {
             trigger: ".comparison-sequence",
-            start: "top top",
+            start: "top 60px" /* <-- CHANGE THIS */,
             end: "+=" + scrollDuration,
             scrub: true,
             pin: true,
