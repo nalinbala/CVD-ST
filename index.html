@@ -2647,7 +2647,7 @@
       }
 
       /* =========================================
-   1. MASTHEAD (NAVIGATION) - MATCHING SHOWCASE
+   1. MASTHEAD (NAVIGATION)
 ========================================= */
       .masthead {
         background-color: #0065ad;
@@ -2686,15 +2686,16 @@
         cursor: pointer;
       }
 
-      /* Default State (Desktop/Tablet): Show Full Logo, Hide Mobile ST Icon */
+      /* Default Logo Visibility (Desktop/Tablet) */
       .logo-full {
         display: block !important;
       }
+
       .logo-mobile {
         display: none !important;
       }
 
-      /* Mobile State: Swap to ST Icon */
+      /* Mobile Swap & Alignment */
       @media (max-width: 600px) {
         .logo-full {
           display: none !important;
@@ -2703,7 +2704,15 @@
           display: block !important;
         }
         .masthead-inner {
-          padding: 0 15px; /* Tightens the edges on small screens */
+          padding: 0 15px;
+        }
+      }
+
+      /* STICKY NAV FIX: Mobile Landscape view scrolls away */
+      @media (max-width: 950px) and (orientation: landscape) {
+        .masthead {
+          position: absolute !important;
+          top: 0;
         }
       }
     </style>
