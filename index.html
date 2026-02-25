@@ -2208,26 +2208,25 @@
         .pin-sequence .scroll-container {
           gap: 4vw !important;
           justify-content: center !important;
+
+          /* INCREASED: Pulled further up to perfectly center the content */
+          margin-top: -100px !important;
         }
 
         .pin-sequence canvas {
-          /* Safely fits inside the 100vh-60px container, leaving a 10px buffer top/bottom */
+          /* Safely fits inside the 100vh-60px container */
           height: calc(100vh - 80px) !important;
           width: auto !important;
-          max-width: 45vw !important; /* Prevents it from taking over the screen horizontally */
+          max-width: 45vw !important;
           margin: 0 !important;
         }
 
         .pin-sequence .scroll-text {
-          font-size: clamp(
-            12px,
-            4vh,
-            16px
-          ) !important; /* Shrink text slightly to fit */
+          font-size: clamp(12px, 4vh, 16px) !important;
           line-height: 1.3;
           flex: 1;
-          max-width: 45vw !important; /* Gives the text half the screen width */
-          text-align: left !important; /* Left alignment is much easier to read in small spaces */
+          max-width: 45vw !important;
+          text-align: left !important;
         }
       }
 
