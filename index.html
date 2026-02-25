@@ -2729,6 +2729,59 @@
           100dvh - 60px
         ) !important; /* 'dvh' fixes Safari/iPad address bar jumping */
       }
+
+      /* ==================================================================
+         FIX: COMPARISON SEQUENCE MOBILE LANDSCAPE (Side-by-Side)
+         Forces Image Left & Text Right to save vertical space
+         ================================================================== */
+      @media (max-width: 950px) and (orientation: landscape) {
+        .comparison-sequence .comparison-pin-container {
+          padding-top: 0 !important; /* <--- Changed from 40px to 0 */
+          justify-content: center !important;
+        }
+
+        .comparison-heading {
+          /* Shrinks the heading slightly so it doesn't eat the whole screen */
+          font-size: clamp(14px, 4vh, 18px) !important;
+          margin-bottom: 2vh !important;
+        }
+
+        .comparison-content-wrapper {
+          flex-direction: row !important; /* The magic rule: Side-by-Side */
+          gap: 5vw !important;
+          align-items: center !important;
+        }
+
+        .comparison-image-area {
+          flex: 1 !important;
+          max-width: 50% !important;
+          justify-content: flex-end !important;
+        }
+
+        #comparison-img {
+          /* Allows the image to fill the short vertical space */
+          max-height: 65vh !important;
+          width: auto !important;
+          object-position: top center !important;
+        }
+
+        .comparison-text-area {
+          flex: 1 !important;
+          max-width: 50% !important;
+          text-align: left !important; /* Left-aligns text like desktop */
+          padding-left: 0 !important;
+        }
+
+        /* Scales the data text to fit the landscape height nicely */
+        .comparison-year {
+          font-size: clamp(24px, 10vh, 40px) !important;
+          line-height: 1 !important;
+        }
+
+        .comparison-deaths {
+          font-size: clamp(14px, 5vh, 20px) !important;
+        }
+      }
     </style>
   </head>
   <body>
