@@ -2646,37 +2646,39 @@
         }
       }
 
-      /* ==================================================================
-         MASTHEAD / NAVIGATION STYLES
-         ================================================================== */
+      /* =========================================
+   1. MASTHEAD (NAVIGATION) - MATCHING SHOWCASE
+========================================= */
       .masthead {
-        width: 100%;
         background-color: #0065ad;
         height: 60px;
-        display: flex;
-        align-items: center;
-        position: relative;
-        z-index: 100;
-        /* NEW: Drop Shadow added below */
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-      .masthead-inner {
-        width: min(95%, 1400px); /* Matches your site's .wrap width */
-        margin: 0 auto;
         display: flex;
-        justify-content: space-between; /* Pushes logos to Left and Right */
         align-items: center;
       }
 
-      /* Logo Sizing */
+      .masthead-inner {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
       .masthead-left img,
       .masthead-right img {
-        height: 30px; /* Adjust based on your SVG size */
+        height: 35px;
         width: auto;
         display: block;
       }
 
-      /* Ensure the new links behave perfectly in the flex layout */
       .hub-link {
         display: flex;
         align-items: center;
@@ -2684,32 +2686,24 @@
         cursor: pointer;
       }
 
-      /* --- RESPONSIVE LOGO SWAPPING --- */
-
-      /* 1. Default State (Desktop/Tablet/Landscape) */
-      /* Show Full "Sunday Times" Text */
+      /* Default State (Desktop/Tablet): Show Full Logo, Hide Mobile ST Icon */
       .logo-full {
         display: block !important;
-        height: 30px; /* Adjust if needed */
-        width: auto;
       }
-      /* Hide "ST" Icon */
       .logo-mobile {
         display: none !important;
       }
 
-      /* 2. Mobile Portrait State (Screens narrower than 768px) */
-      @media (max-width: 768px) {
-        /* Hide Full "Sunday Times" Text */
+      /* Mobile State: Swap to ST Icon */
+      @media (max-width: 600px) {
         .logo-full {
           display: none !important;
         }
-
-        /* Show "ST" Icon */
         .logo-mobile {
           display: block !important;
-          height: 30px; /* Matches the height of the right logo */
-          width: auto;
+        }
+        .masthead-inner {
+          padding: 0 15px; /* Tightens the edges on small screens */
         }
       }
     </style>
