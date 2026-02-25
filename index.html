@@ -2790,6 +2790,42 @@
           font-size: clamp(14px, 5vh, 20px) !important;
         }
       }
+
+      /* ==================================================================
+         FIX: CORONARY & HEART DIAGRAMS (MOBILE LANDSCAPE / GALAXY A17)
+         Fixes missing text, cropped bottoms, and incorrectly placed labels
+         ================================================================== */
+
+      /* 1. Globally remove the fixed heights that cause text drifting and cropping */
+      #ai2html-heart,
+      #ai2html-heart .g-artboard,
+      #ai2html-coronary,
+      #ai2html-coronary .g-artboard {
+        height: auto !important; /* Allows the container to resize proportionally */
+        overflow: visible !important; /* Prevents text from being sliced off */
+      }
+
+      /* 2. Scale diagrams for landscape phones so they fit the short screen */
+      @media (max-width: 950px) and (orientation: landscape) {
+        #ai2html-heart,
+        #ai2html-coronary {
+          width: auto !important;
+          max-width: 45vw !important; /* Shrinks the diagram width to half the screen */
+          margin: 30px auto !important;
+        }
+
+        #ai2html-heart .g-artboard,
+        #ai2html-coronary .g-artboard {
+          transform: none !important; /* Disables any rogue scaling */
+        }
+
+        #ai2html-heart .g-aiAbs,
+        #ai2html-coronary .g-aiAbs {
+          /* Shrink text to keep it perfectly aligned with the smaller diagram */
+          font-size: clamp(10px, 3.5vh, 16px) !important;
+          line-height: 1.2 !important;
+        }
+      }
     </style>
   </head>
   <body>
