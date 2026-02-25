@@ -2500,7 +2500,7 @@
       /* 2. Heading Style (Matches Heading.jpg) */
       .comparison-heading {
         font-family: "Roboto", serif;
-        font-size: clamp(16px, 2.5vw, 32px); /* Responsive size */
+        font-size: clamp(16px, 2vw, 28px); /* Responsive size */
         color: #ffffff;
         text-align: center;
         margin-bottom: 2vh; /* Small gap below heading */
@@ -2676,11 +2676,19 @@
         display: block;
       }
 
+      /* Ensure the new links behave perfectly in the flex layout */
+      .hub-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
       /* --- RESPONSIVE LOGO SWAPPING --- */
 
       /* 1. Default State (Desktop/Tablet/Landscape) */
       /* Show Full "Sunday Times" Text */
-      .logo-desktop {
+      .logo-full {
         display: block !important;
         height: 30px; /* Adjust if needed */
         width: auto;
@@ -2693,7 +2701,7 @@
       /* 2. Mobile Portrait State (Screens narrower than 768px) */
       @media (max-width: 768px) {
         /* Hide Full "Sunday Times" Text */
-        .logo-desktop {
+        .logo-full {
           display: none !important;
         }
 
@@ -2708,19 +2716,30 @@
   </head>
   <body>
     <nav class="masthead">
-      <div class="masthead-inner wrap">
+      <div class="masthead-inner">
         <div class="masthead-left">
-          <img
-            src="images/st-logo-full.svg"
-            alt="Sunday Times"
-            class="logo-desktop"
-          />
-
-          <img src="images/st-logo-mobile.svg" alt="ST" class="logo-mobile" />
+          <a
+            href="https://nalinbala.github.io/showcase/"
+            class="hub-link"
+            aria-label="Return to Infographics Hub"
+          >
+            <img
+              src="images/st-logo-full.svg"
+              alt="Sunday Times"
+              class="logo-full"
+            />
+            <img src="images/st-logo-mobile.svg" alt="ST" class="logo-mobile" />
+          </a>
         </div>
 
         <div class="masthead-right">
-          <img src="images/infographics-logo.svg" alt="Infographics" />
+          <a
+            href="hub.html"
+            class="hub-link"
+            aria-label="Return to Infographics Hub"
+          >
+            <img src="images/infographics-logo.svg" alt="Infographics" />
+          </a>
         </div>
       </div>
     </nav>
