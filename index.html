@@ -2347,7 +2347,7 @@
         /* "Plaques" - Middle Right */
         /* Aligned with the yellow fatty streak */
         #g-coronary-Artboard_1 #g-ai0-2 {
-          top: 24% !important;
+          top: 19% !important;
           right: 5% !important;
           text-align: right !important;
         }
@@ -2355,7 +2355,7 @@
         /* "Narrowed artery" - Middle Left */
         /* Aligned with the white narrow gap in the lower tube */
         #g-coronary-Artboard_1 #g-ai0-3 {
-          top: 55% !important;
+          top: 43% !important;
           left: 5% !important;
           text-align: left !important;
         }
@@ -2363,7 +2363,7 @@
         /* "Blood clot" - Bottom Left */
         /* Aligned with the red clot mass */
         #g-coronary-Artboard_1 #g-ai0-4 {
-          top: 68% !important;
+          top: 51% !important;
           left: 5% !important;
           text-align: left !important;
         }
@@ -2793,37 +2793,108 @@
 
       /* ==================================================================
          FIX: CORONARY & HEART DIAGRAMS (MOBILE LANDSCAPE / GALAXY A17)
-         Fixes missing text, cropped bottoms, and incorrectly placed labels
+         Overrides conflicting mobile aspect ratios and restores perfect scaling
          ================================================================== */
 
-      /* 1. Globally remove the fixed heights that cause text drifting and cropping */
+      /* 1. Globally remove fixed heights to prevent clipping */
       #ai2html-heart,
       #ai2html-heart .g-artboard,
       #ai2html-coronary,
       #ai2html-coronary .g-artboard {
-        height: auto !important; /* Allows the container to resize proportionally */
-        overflow: visible !important; /* Prevents text from being sliced off */
+        height: auto !important;
+        overflow: visible !important;
       }
 
-      /* 2. Scale diagrams for landscape phones so they fit the short screen */
+      /* 2. Lock diagrams to exact Desktop coordinates & ratios for landscape */
       @media (max-width: 950px) and (orientation: landscape) {
         #ai2html-heart,
         #ai2html-coronary {
-          width: auto !important;
-          max-width: 45vw !important; /* Shrinks the diagram width to half the screen */
-          margin: 30px auto !important;
+          width: 100% !important;
+          max-width: 40vw !important; /* Keep it compact on the side */
+          margin: 15px auto !important;
         }
 
         #ai2html-heart .g-artboard,
         #ai2html-coronary .g-artboard {
-          transform: none !important; /* Disables any rogue scaling */
+          transform: none !important;
+          padding-bottom: 0 !important; /* Erase rogue mobile padding from wrappers */
         }
 
-        #ai2html-heart .g-aiAbs,
-        #ai2html-coronary .g-aiAbs {
-          /* Shrink text to keep it perfectly aligned with the smaller diagram */
-          font-size: clamp(10px, 3.5vh, 16px) !important;
-          line-height: 1.2 !important;
+        /* --- RESET CORONARY DIAGRAM --- */
+        #g-coronary-Artboard_1 > div:first-child {
+          padding-bottom: 150.7246% !important; /* Forces original ratio */
+        }
+        #g-coronary-Artboard_1-img {
+          content: url("images/coronary-Artboard_1.jpg") !important;
+        }
+        /* Lock labels to exact original spots */
+        #g-coronary-Artboard_1 #g-ai0-1 {
+          top: 5.4487% !important;
+          right: 2.9776% !important;
+          left: auto !important;
+        }
+        #g-coronary-Artboard_1 #g-ai0-2 {
+          top: 27.5154% !important;
+          right: 3.0306% !important;
+          left: auto !important;
+        }
+        #g-coronary-Artboard_1 #g-ai0-3 {
+          top: 60.4167% !important;
+          left: 5.5041% !important;
+          right: auto !important;
+        }
+        #g-coronary-Artboard_1 #g-ai0-4 {
+          top: 71.4744% !important;
+          left: 5.5041% !important;
+          right: auto !important;
+        }
+
+        /* --- RESET HEART DIAGRAM --- */
+        #g-heart-Artboard_1 > div:first-child {
+          padding-bottom: 108.7619% !important; /* Forces original ratio */
+        }
+        /* Lock labels to exact original spots */
+        #g-heart-Artboard_1 #g-ai0-1 {
+          top: 10.2795% !important;
+          right: 37.2554% !important;
+          left: auto !important;
+        }
+        #g-heart-Artboard_1 #g-ai0-2 {
+          top: 10.5079% !important;
+          left: 3.6721% !important;
+          right: auto !important;
+        }
+        #g-heart-Artboard_1 #g-ai0-3 {
+          top: 22.9422% !important;
+          right: 4.0744% !important;
+          left: auto !important;
+        }
+        #g-heart-Artboard_1 #g-ai0-4 {
+          top: 53.7653% !important;
+          right: 4.2128% !important;
+          left: auto !important;
+        }
+        #g-heart-Artboard_1 #g-ai0-5 {
+          top: 66.0245% !important;
+          right: 4.2128% !important;
+          left: auto !important;
+        }
+        #g-heart-Artboard_1 #g-ai0-6 {
+          top: 81.4361% !important;
+          left: 3.6721% !important;
+          right: auto !important;
+        }
+        #g-heart-Artboard_1 #g-ai0-7 {
+          top: 85.289% !important;
+          right: 4.0964% !important;
+          left: auto !important;
+        }
+
+        /* Ensure text scales cleanly inside the smaller landscape boxes */
+        #ai2html-heart .g-aiAbs p,
+        #ai2html-coronary .g-aiAbs p {
+          font-size: clamp(10px, 2.5vw, 14px) !important;
+          line-height: 1.1 !important;
         }
       }
     </style>
